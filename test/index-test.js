@@ -3,129 +3,31 @@ var sinon = require('sinon');
 // change to give addresses of head,
 // write function called get head.
 
+describe('#findMinAndRemove', function() {
+  it("should return the smallest element of an array", function() {
+    let array = [2, 3, 4, 5, 6, 7]
+    expect(findMinAndRemoveSorted(array)).toEqual(2)
+  });
 
-describe('#getName', function() {
-  it("should return the name of the node passed through", function() {
-    let node = {name: 'Susie'}
-    expect(getName(node)).toEqual('Susie')
+  it("should remove the smallest element from an array", function() {
+    let array = [2, 3, 4, 5, 6, 7]
+    findMinAndRemoveSorted(array)
+    expect(array.includes(2)).toEqual(false)
   });
 });
 
-describe('#head', function() {
-  it("should return head node of the linked list", function() {
-    let firstNode = {name: 'susie', next: 'rkjasj'}
-    let secondNode = {name: 'sam', next: 'asnan'}
-    let lastNode = {name: 'charlie', next: null}
-    let collection = {rkjasj: secondNode, asnan: lastNode, whana: firstNode}
-    let linkedList = 'whana'
-    let head = collection[linkedList]
-    expect(headNode(linkedList, collection)).toEqual(head)
+describe('#merge', function() {
+  it("should merge two sorted arrays to produce one sorted array", function() {
+    let firstSubarray = [3, 4, 6, 7]
+    let secondSubArray = [1, 2, 5, 8]
+    let sorted = merge(firstSubarray, secondSubArray)
+    expect(sorted).toEqual([1, 2, 3, 4, 5, 6, 7, 8])
   });
 });
 
-describe('#next', function() {
-  it("should return the following node every time it is called", function() {
-    let firstNode = {name: 'susie', next: 'rkjasj'}
-    let secondNode = {name: 'sam', next: 'asnan'}
-    let lastNode = {name: 'charlie', next: null}
-    let collection = {rkjasj: secondNode, asnan: lastNode, whana: firstNode}
-    let linkedList = 'whana'
-    let head = collection[linkedList]
-    expect(next(head, collection)).toEqual(secondNode)
-  });
-
-  it("returns the correct node when called multiple times", function() {
-    let firstNode = {name: 'susie', next: 'rkjasj'}
-    let secondNode = {name: 'sam', next: 'asnan'}
-    let lastNode = {name: 'charlie', next: null}
-    let collection = {rkjasj: secondNode, asnan: lastNode, whana: firstNode}
-    let linkedList = 'whana'
-    let head = collection[linkedList]
-    let nextNode = next(head, collection)
-    let nextNextNode = next(nextNode, collection)
-    expect(nextNextNode).toEqual(lastNode)
-  });
-});
-
-describe('#nodeAt', function() {
-  it("should return at the provided index", function() {
-    let firstNode = {name: 'susie', next: 'rkjasj'}
-    let secondNode = {name: 'sam', next: 'asnan'}
-    let lastNode = {name: 'charlie', next: null}
-    let collection = {rkjasj: secondNode, asnan: lastNode, whana: firstNode}
-    let linkedList = 'whana'
-    expect(nodeAt(0, linkedList, collection)).toEqual(firstNode)
-    expect(nodeAt(2, linkedList, collection)).toEqual(lastNode)
-  });
-});
-
-describe('#addressAt', function(){
-  it("should return the address of the node at the address", function() {
-    let firstNode = {name: 'susie', next: 'rkjasj'}
-    let secondNode = {name: 'sam', next: 'asnan'}
-    let lastNode = {name: 'charlie', next: null}
-    let collection = {rkjasj: secondNode, asnan: lastNode, whana: firstNode}
-    let linkedList = 'whana'
-    expect(addressAt(1, linkedList, collection)).toEqual('rkjasj')
-    expect(addressAt(0, linkedList, collection)).toEqual('whana')
-
-  })
-})
-
-describe('#indexAt', function() {
-  it("should return the index of the provided node", function() {
-    let firstNode = {name: 'susie', next: 'rkjasj'}
-    let secondNode = {name: 'sam', next: 'asnan'}
-    let lastNode = {name: 'charlie', next: null}
-    let linkedList = 'whana'
-    let collection = {rkjasj: secondNode, asnan: lastNode, whana: firstNode}
-    expect(indexAt(firstNode, collection, linkedList)).toEqual(0)
-    expect(indexAt(secondNode, collection, linkedList)).toEqual(1)
-  })
-})
-
-describe('#insertNodeAt', function() {
-  it("should set the next property of the inserted node", function() {
-    let firstNode = {name: 'susie', next: 'rkjasj'}
-    let secondNode = {name: 'sam', next: 'asnan'}
-    let newNode = {name: 'jill', next: ''}
-    let lastNode = {name: 'charlie', next: null}
-    let collection = {rkjasj: secondNode,
-      asnan: lastNode,
-      whana: firstNode,
-      ajhsak: newNode}
-    let linkedList = 'whana'
-    insertNodeAt(1, 'ajhsak', linkedList, collection)
-    expect(newNode.next).toEqual('rkjasj')
-  })
-
-  it("should set the next property of the node previous to the inserted node", function() {
-    let firstNode = {name: 'susie', next: 'rkjasj'}
-    let secondNode = {name: 'sam', next: 'asnan'}
-    let newNode = {name: 'jill', next: ''}
-    let lastNode = {name: 'charlie', next: null}
-    let collection = {rkjasj: secondNode,
-      asnan: lastNode,
-      whana: firstNode,
-      ajhsak: newNode}
-    let linkedList = 'whana'
-    insertNodeAt(1, 'ajhsak', linkedList, collection)
-    expect(firstNode.next).toEqual('ajhsak')
-  })
-
-  it("should insert the node at the provided index, while maintaining order of all the other nodes", function() {
-    let firstNode = {name: 'susie', next: 'rkjasj'}
-    let secondNode = {name: 'sam', next: 'asnan'}
-    let newNode = {name: 'jill', next: ''}
-    let lastNode = {name: 'charlie', next: null}
-    let collection = {rkjasj: secondNode,
-      asnan: lastNode,
-      whana: firstNode,
-      ajhsak: newNode}
-    let linkedList = 'whana'
-
-    insertNodeAt(1, 'ajhsak', linkedList, collection)
-    expect(nodeAt(1, linkedList, collection)).toEqual(newNode)
-    expect(nodeAt(2, linkedList, collection)).toEqual(secondNode)
+describe('#mergeSort', function() {
+  it("should sort an unsorted array", function() {
+    let unsorted = [12, 10, 9, 14, 1, 3, 5, 11, 6, 15, 16, 13, 2, 4, 8, 7]
+    expect(mergeSort(unsorted)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])
   });
 });
