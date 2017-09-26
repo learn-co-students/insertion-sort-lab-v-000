@@ -18,5 +18,5 @@ function insertionSort(array){
       newMin = findMinAndRemove(array)
       sortedArray.push(newMin)
     }
-  return sortedArray;
+  return sortedArray; // returns sorted array!
 }
