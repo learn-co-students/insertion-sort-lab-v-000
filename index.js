@@ -7,9 +7,14 @@ function findMinAndRemove(array){
       minIndex = i
     }
   }
-  return array.splice(minIndex, 1)
+  array.splice(minIndex, 1)
+  return minValue;
 }
 
 function insertionSort(array){
-
+  let sortedArr = []
+  while (array.length != 0) {
+    sortedArr.push(findMinAndRemove(array))
+  }
+  return sortedArr
 }
