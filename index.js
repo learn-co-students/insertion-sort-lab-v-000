@@ -26,3 +26,5 @@ function insertionSort(array){
 }
 
 https://jsbin.com/zuriwasexu/edit?js,output
+
+merging - https://jsbin.com/qoripuneza/edit?js,output
