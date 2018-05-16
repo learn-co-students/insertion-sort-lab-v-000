@@ -24,3 +24,5 @@ function insertionSort(array){
 
 	return sorted;
 }
+
+https://jsbin.com/zuriwasexu/edit?js,output
