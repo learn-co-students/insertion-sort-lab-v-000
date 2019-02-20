@@ -1,7 +1,20 @@
 function findMinAndRemove(array){
-
+  let minIndex = 0
+  for (let i = 0; i < array.length; i++) {
+    let currentElement = array[i]
+    if (currentElement < array[minIndex]) {
+      minIndex = i
+    }
+  }
+  return array.splice(minIndex, 1)
 }
 
 function insertionSort(array){
-
+  let newMin
+  let sorted = []
+  while (array.length > 0) {
+    newMin = findMinAndRemove(array)
+    sorted.push(newMin)
+  }
+  return sorted
 }
