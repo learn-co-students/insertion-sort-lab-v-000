@@ -2,6 +2,6 @@ function findMinAndRemove(array){
 
 }
 
-function insertionSort(array){
+function selectionSort(array){
 
 }
