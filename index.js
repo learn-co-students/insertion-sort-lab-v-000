@@ -16,7 +16,7 @@ const selectionSort = (arr) => {
   let newMin;
   while (arr.length !== 0) {
     newMin = findMinAndRemove(arr);
-    newArr.push(findMinAndRemove(newMin));
+    newArr.push(newMin);
   }
 
   return newArr;
